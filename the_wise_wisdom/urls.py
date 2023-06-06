@@ -27,6 +27,7 @@ urlpatterns = [
     path('category/', include('blog.urls')),
     path('blogs/<slug:slug>/', blog_view.blogs, name='blog'),
     path('blogs/search/', blog_view.search, name='search'),
+    path('signup/', views.signup, name='signup'),
 ]
 
 if settings.DEBUG:

@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from blog.models import Announcement, Blog
+from the_wise_wisdom.forms import SignupForm
 
 
 def home(request):
@@ -15,3 +16,15 @@ def home(request):
         'announcements': announcements,
     }
     return render(request, 'home.html', context)
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('signup')
+    else:
+        form = SignupForm()
+    context = {'form': form}
+    return render(request, 'signup.html', context)
