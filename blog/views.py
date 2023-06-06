@@ -7,7 +7,7 @@ def posts_by_category(request, category_id):
     try:
         category = Category.objects.get(pk=category_id)
     except Exception:
-        return redirect('home')
+        return render(request, '404.html')
     context = {
         'posts': posts,
         'category': category,
