@@ -19,10 +19,18 @@
     <div class="container">
       <header class="border-bottom lh-1 py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
-          <div class="col-8 pt-1">
+          <div class="col-3 pt-1">
             <a class="blog-header-logo text-body-emphasis text-decoration-none" href="/">The Wise Wisdom</a>
           </div>
-          <div class="col-4 d-flex justify-content-end align-items-center">
+          <div class="col-7 pt-1">
+            <form class="container-fluid" action="{% url 'search' %}" method="GET">
+              <div class="input-group">
+                <input type="text" name="query" value="{{ query }}" class="form-control" placeholder="Search" aria-label="search" aria-describedby="btn-search">
+                <button type="submit" class="btn btn-dark" id="btn-search"><i class="fa fa-search"></i></button>
+              </div>
+            </form>
+          </div>
+          <div class="col-2 d-flex justify-content-end align-items-center">
             <a class="btn btn-sm btn-outline-dark rounded-pill me-1" href="#">Signin</a>
             <a class="btn btn-sm btn-outline-dark rounded-pill ms-1" href="#">Signup</a>
           </div>

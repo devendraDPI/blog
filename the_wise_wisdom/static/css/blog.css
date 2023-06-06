@@ -98,3 +98,8 @@ h1, h2, h3, h4, h5, h6 {
 .carousel img {
   filter: brightness(30%);
 }
+
+.form-control:focus {
+  border-color: #000000;
+  box-shadow: 0 0 0 0.2rem rgba(92, 92, 92, 0.25);
+}
