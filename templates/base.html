@@ -31,7 +31,7 @@
       <div class="nav-scroller py-1 mb-3 border-bottom">
         <nav class="nav nav-underline justify-content-between">
           {% for category in categories %}
-            <a class="nav-item nav-link link-body-emphasis active" href="#">{{ category.category_name }}</a>
+            <a class="nav-item nav-link link-body-emphasis active" href="{% url 'posts-by-category' category.id %}">{{ category.category_name }}</a>
           {% endfor %}
         </nav>
       </div>
