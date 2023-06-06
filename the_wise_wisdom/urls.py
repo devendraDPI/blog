@@ -19,11 +19,13 @@ from django.urls import include, path
 from the_wise_wisdom import views
 from django.conf.urls.static import static
 from django.conf import settings
+from blog import views as blog_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('category/', include('blog.urls')),
+    path('<slug:slug>/', blog_view.blogs, name='blog'),
 ]
 
 if settings.DEBUG:
