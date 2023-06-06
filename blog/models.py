@@ -38,3 +38,18 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Announcement(models.Model):
+    title = models.CharField(max_length=64)
+    description = models.TextField(max_length=512)
+    announce_image = models.ImageField(upload_to='uploads/announcements/%Y/%m/%d')
+    is_announce = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural = 'Announcements'
+
+    def __str__(self):
+        return self.title
