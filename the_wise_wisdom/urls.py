@@ -28,6 +28,8 @@ urlpatterns = [
     path('blogs/<slug:slug>/', blog_view.blogs, name='blog'),
     path('blogs/search/', blog_view.search, name='search'),
     path('signup/', views.signup, name='signup'),
+    path('signin/', views.signin, name='signin'),
+    path('signout/', views.signout, name='signout'),
 ]
 
 if settings.DEBUG:

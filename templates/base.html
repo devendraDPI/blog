@@ -31,9 +31,14 @@
             </form>
           </div>
           <div class="col-2 d-flex justify-content-end align-items-center">
-            <a class="btn btn-sm btn-outline-dark rounded-pill me-1" href="#">Signin</a>
-            <a class="btn btn-sm btn-outline-dark rounded-pill ms-1" href="{% url 'signup' %}">Signup</a>
-          </div>
+            {% if not user.is_authenticated %}
+              <a class="btn btn-sm btn-outline-dark rounded-pill me-1" href="{% url 'signin' %}">Signin</a>
+              <a class="btn btn-sm btn-outline-dark rounded-pill ms-1" href="{% url 'signup' %}">Signup</a>
+            {% else %}
+              <i class="fa fa-user-circle"></i>&emsp14;<span>{{ user }}</span>
+              <a class="btn btn-sm btn-outline-dark rounded-pill ms-1" href="{% url 'signout' %}">Signout</a>
+            {% endif %}
+            </div>
         </div>
       </header>
       <div class="nav-scroller py-1 mb-3 border-bottom">
