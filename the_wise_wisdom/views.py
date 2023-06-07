@@ -9,7 +9,7 @@ def home(request):
     featured_posts = Blog.objects.filter(
         is_featured=True, status='published').order_by('updated_at')
     posts = Blog.objects.filter(
-        is_featured=False, status='published')
+        is_featured=False, status='published').order_by('-created_at')
     announcements = Announcement.objects.filter(
         is_announce=True).order_by('-updated_at')[:len(posts)]
     context = {
