@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blog.models import Category, Blog, Announcement
+from blog.models import Category, Blog, Announcement, BlogComment
 
 # Register your models here.
 class BlogAdmin(admin.ModelAdmin):
@@ -12,6 +12,11 @@ class BlogAdmin(admin.ModelAdmin):
     list_per_page = 10
 
 
+class BlogCommentAdmin(admin.ModelAdmin):
+    list_display = ('user', 'blog', 'created_at', 'updated_at')
+    list_per_page = 10
+
+
 class AnnouncementAdmin(admin.ModelAdmin):
     list_display = ('title', 'description', 'is_announce', 'created_at', 'updated_at')
     search_fields = ('title', 'description',)
@@ -21,4 +26,5 @@ class AnnouncementAdmin(admin.ModelAdmin):
 
 admin.site.register(Category)
 admin.site.register(Blog, BlogAdmin)
+admin.site.register(BlogComment, BlogCommentAdmin)
 admin.site.register(Announcement, AnnouncementAdmin)

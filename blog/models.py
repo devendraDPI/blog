@@ -40,6 +40,20 @@ class Blog(models.Model):
         return self.title
 
 
+class BlogComment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    comment = models.TextField(max_length=2048)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural = 'Blog comments'
+
+    def __str__(self):
+        return self.comment
+
+
 class Announcement(models.Model):
     title = models.CharField(max_length=64)
     description = models.TextField(max_length=512)

@@ -14,6 +14,35 @@
               <p class="card-text mb-auto">{{ article.blog_body }}</p>
             </div>
           </div>
+          <h4>Comment{{ comments_count|pluralize }} ({{ comments_count }})</h4><hr>
+          {% if user.is_authenticated %}
+            <div class="card my-3 shadow">
+              <div class="card-body">
+                <div class="form-group">
+                  <form action="" method="POST"> {% csrf_token %}
+                    <div class="form-group">
+                      <textarea name="comment" class="form-control" placeholder="Write comment here..."></textarea>
+                      <input type="submit" value="submit" class="btn btn-dark rounded-pill mt-2">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          {% else %}
+            <span><a href="{% url 'signin' %}">Signin</a></span> to add comment.<hr>
+          {% endif %}
+          {% if comments %}
+            {% for comment in comments %}
+              <div class="card my-1 shadow-sm">
+                <div class="card-body">
+                  <span class="badge bg-dark rounded-pill text-white">{{ comment.user }} | {{ comment.created_at|timesince }} ago</span>
+                  <p class="card-text">{{ comment }}</p>
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            No comments
+          {% endif %} <br>
       </div>
       <div class="col-md-4">
         <div class="position-sticky" style="top: 2rem;">
