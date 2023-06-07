@@ -6,11 +6,15 @@
     <div class="row">
       {% include 'dashboard/sidebar.html' %}
       <div class="col-md-9">
-        <h2>Add New Category</h2><hr>
-        <form action="{% url 'add-category' %}" method="POST" style="width: 500px;"> {% csrf_token %}
-          {{ form|crispy }}
-          <button type="submit" class="btn btn-dark rounded-pill">Submit</button>
-        </form><br>
+        {% if perms.blog.add_category %}
+          <h2>Add New Category</h2><hr>
+          <form action="{% url 'add-category' %}" method="POST" style="width: 500px;"> {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-dark rounded-pill">Submit</button>
+          </form><br>
+        {% else %}
+          <h5 class="text-danger">Restricted</h5>
+        {% endif %}
       </div>
     </div>
   </div>

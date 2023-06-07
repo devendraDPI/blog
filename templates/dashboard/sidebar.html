@@ -4,7 +4,11 @@
     {% if perms.auth.view_user %}
       <a href="{% url 'users' %}" class="nav-link {% if '/users/' in request.path %}text-light bg-dark{% else %}text-dark{% endif %}">Users</a>
     {% endif %}
+    {% if perms.blog.view_category %}
       <a href="{% url 'categories' %}" class="nav-link {% if '/categories/' in request.path %}text-light bg-dark{% else %}text-dark{% endif %}">Categories</a>
-    <a href="{% url 'posts' %}" class="nav-link {% if '/posts/' in request.path %}text-light bg-dark{% else %}text-dark{% endif %}">Posts</a>
+    {% endif %}
+    {% if perms.blog.view_blog %}
+      <a href="{% url 'posts' %}" class="nav-link {% if '/posts/' in request.path %}text-light bg-dark{% else %}text-dark{% endif %}">Posts</a>
+    {% endif %}
   </div>
 </div>
