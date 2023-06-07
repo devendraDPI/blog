@@ -7,7 +7,7 @@
         <h3>{{ article.title }}</h3> <hr>
           <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative">
             <div class="col p-4 d-flex flex-column position-static">
-              <a href="{% url 'posts-by-category' article.id %}"><strong class="d-inline-block mb-2 text-primary-emphasis">{{ article.category }}</strong></a>
+              <a href="{% url 'posts-by-category' article.category.id %}"><strong class="d-inline-block mb-2 text-primary-emphasis">{{ article.category }}</strong></a>
               <h3 class="mb-0">{{ post.title }}</h3>
               <div class="mb-1 text-body-secondary">{{ article.created_at|timesince }} ago | {{ article.author }}</div>
               <figure class="mb-4"><img class="img-fluid rounded" src="{{ article.featured_image.url }}" alt="..." /></figure>
