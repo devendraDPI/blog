@@ -3,7 +3,7 @@ from decouple import config
 
 
 def get_categories(request):
-    categories = Category.objects.all()
+    categories = Category.objects.all().order_by('category_name')
     return {'categories': categories}
 
 

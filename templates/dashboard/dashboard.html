@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Dashboard{% endblock title %}
+{% block content %}
+  <div class="container">
+    <div class="row">
+      {% include 'dashboard/sidebar.html' %}
+      <div class="col-md-9">
+        <h2>Welcome, <b>{{ user }}</b></h2><hr>
+        <div class="row">
+          <div class="col">
+            <div class="card shadow border-default mb-3">
+              <div class="card-headder text-center text-uppercase font-weight-bold"><b>Categories</b></div>
+              <div class="card-body text-dark">
+                <h5 class="card-title text-center">{{ category_count }}</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow border-default mb-3">
+              <div class="card-headder text-center text-uppercase font-weight-bold"><b>Posts</b></div>
+              <div class="card-body text-dark">
+                <h5 class="card-title text-center">{{ blogs_count }}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
