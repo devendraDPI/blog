@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Edit user{% endblock title %}
+{% block content %}
+  <div class="container">
+    <div class="row">
+      {% include 'dashboard/sidebar.html' %}
+      <div class="col-md-9">
+        {% if perms.auth.add_user %}
+          <h2>Edit User</h2><hr>
+          <form action="" method="POST"> {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-dark rounded-pill">Submit</button>
+          </form><br>
+        {% else %}
+          <h5 class="text-danger">Restricted</h5>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock content %}
