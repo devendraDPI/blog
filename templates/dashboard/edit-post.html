@@ -9,6 +9,7 @@
         {% if perms.blog.change_blog %}
           <h2>Edit Post</h2><hr>
           <form action="{% url 'edit-post' post.id %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+            {{ form.media }}
             {{ form|crispy }}
             <button type="submit" class="btn btn-dark rounded-pill">Submit</button>
           </form><br>

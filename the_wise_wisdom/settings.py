@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'dashboard.apps.DashboardConfig',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -147,3 +148,39 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+
+# Ckeditor
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'skin': 'moono',
+        'toolbar': 'full',
+        'codeSnippet_theme': 'moonokai',
+        'height': 450,
+        'width': '100%',
+        'toolbarCanCollapse': True,
+        'tabSpaces': 4,
+        'filebrowserWindowHeight': 725,
+        'filebrowserWindowWidth': 940,
+        'extraPlugins': ','.join(
+            [
+                'div',
+                'widget',
+                'dialog',
+                # 'autogrow',
+                'autolink',
+                'devtools',
+                'dialogui',
+                'autoembed',
+                'clipboard',
+                'lineutils',
+                'codesnippet',
+                'uploadimage',
+                'elementspath',
+                'embedsemantic',
+            ]
+        ),
+    },
+}

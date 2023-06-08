@@ -5,7 +5,8 @@ from django.http import HttpResponseRedirect
 
 # Create your views here.
 def posts_by_category(request, category_id):
-    posts = Blog.objects.filter(status='published', category=category_id)
+    posts = Blog.objects.filter(
+        status='published', category=category_id).order_by('-created_at')
     try:
         category = Category.objects.get(pk=category_id)
     except Exception:
@@ -38,7 +39,10 @@ def blogs(request, slug):
 
 def search(request):
     query = request.GET.get('query')
-    blogs = Blog.objects.filter(Q(title__icontains=query) | Q(
-        short_description__icontains=query) | Q(blog_body__icontains=query), status='published')
+    blogs = Blog.objects.filter(
+        Q(title__icontains=query) | 
+        Q(short_description__icontains=query) | 
+        Q(blog_body__icontains=query), 
+        status='published').order_by('-created_at')
     context = {'query': query, 'blogs': blogs}
     return render(request, 'search.html', context)
